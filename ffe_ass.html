@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- 
+Copyright(c) Prophet Corporation (2022)
+
+
+// DATE:      10/10/2022
+// ENGINEER:  Lewous
+//            
+// FILE:      ffe_generater.html
+// BLOCK:     
+// REVISION:  0.01
+//
+// DESCRIPTION:	generate ffe code for handcraft usage
+ -->
+
+<html>
+<head>
+    <script>
+    	function test() {
+        	document.getElementById('dd1').innerText = 'dd';
+        	
+            return 'ddd'
+        }
+    
+    </script>
+
+
+    <script>
+        function reflash_ffe() {
+            var str1 = 'set port '
+            var gport = document.getElementById("gport1").value;
+            var serdes = Number(document.getElementById("serdes1").value);
+            var type = document.getElementById("type1").value;
+            var c0 = document.getElementById("c01").value;
+            var c1 = document.getElementById("c11").value;
+            var c2 = document.getElementById("c21").value;
+            var c3 = document.getElementById("c31").value;
+            document.getElementById('dd1').innerText = 'port '+gport + ' start';
+            document.getElementById('dd2').innerText = str1 +  String(serdes+0) + ' ffe mode ' + type + 
+                ' c0 ' + c0 +  ' c1 ' + c1 + ' c2 ' + c2 + ' c3 ' + c3;
+            document.getElementById('dd3').innerText = str1 + String(serdes+1) + ' ffe mode ' + type + 
+                ' c0 ' + c0 +  ' c1 ' + c1 + ' c2 ' + c2 + ' c3 ' + c3;
+            document.getElementById('dd4').innerText = str1 + String(serdes+2) + ' ffe mode ' + type + 
+                ' c0 ' + c0 +  ' c1 ' + c1 + ' c2 ' + c2 + ' c3 ' + c3;
+            document.getElementById('dd5').innerText = str1 + String(serdes+3) + ' ffe mode ' + type + 
+                ' c0 ' + c0 +  ' c1 ' + c1 + ' c2 ' + c2 + ' c3 ' + c3;
+            document.getElementById('dd6').innerText = 'port '+gport + ' end';
+    
+            return ''
+        }
+         
+    </script>
+
+</head>
+
+<body>
+    
+
+    <h1 id="generate ffe command">写入ffe值</h1>
+
+    <h4>operating within shell</h4>
+
+    <!-- <form action="form_action.asp" method="get"> -->
+
+    <p>GPORT = <input type="text" name="fname" value="0x8020" id="gport1" onchange="reflash_ffe()"/></p>
+    <p>serdes id = <input type="number" setp='2' name="lname" value="80" id="serdes1" onchange="reflash_ffe()"/></p>
+    <p>type is &emsp; <select tabindex="4" id="type1" onchange="reflash_ffe()">
+        <option selected="selected" value="3ap" data="3ap">3ap</option>
+        <option value="user-define" data="user-define">user-define</option>
+    </select></p>
+    
+    <p>c0 <input type="number" value="0" id="c01" onchange="reflash_ffe()"/>
+        c1 <input type="number" value="32" id="c11" onchange="reflash_ffe()"/>
+        c2 <input type="number" value="24" id="c21" onchange="reflash_ffe()"/>
+        c3 <input type="number" value="0" id="c31" onchange="reflash_ffe()"/>
+    </p>
+    
+    <button type="submit" id="sub1" onclick="reflash_ffe()"> Generate</button>    
+
+    <pre><code onclick="copyText()"><p id="dd1"></p><p id="dd2"></p><p id="dd3"></p><p id="dd4"> </p><p id="dd5"></p><p id="dd6"></p>
+    </code></pre>
+</body>
+</html>
